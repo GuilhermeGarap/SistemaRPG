@@ -1,0 +1,2 @@
+namespace ApiRpg.Controllers;
+
