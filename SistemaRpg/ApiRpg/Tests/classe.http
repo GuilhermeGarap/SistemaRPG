@@ -1,0 +1,27 @@
+### Criar nova classe
+POST https://localhost:7108/api/classe/cadastrar
+Content-Type: application/json
+
+{
+    "Nome": "Guerreiro",
+    //AtributoBonus só poder ser preenchido com: Vigor, Força, Agilidade, Presença ou Sabedoria
+    "AtributoBonus": "Força"
+}
+
+### Listar todos os usuários
+GET https://localhost:7108/api/classe/listar
+
+### Alterar o nome de um usuário
+PUT https://localhost:7108/api/classe/alterar/{id}
+Content-Type: application/json
+
+{
+    "Nome": "Mago",
+    //AtributoBonus só poder ser preenchido com: Vigor, Força, Agilidade, Presença ou Sabedoria
+    "AtributoBonus": "Sabedoria"
+}
+### Buscar um usuário específico por id
+GET https://localhost:7108/api/classe/buscar/{id}
+
+### Excluir um usuário por id
+DELETE https://localhost:7108/api/classe/deletar/{id}

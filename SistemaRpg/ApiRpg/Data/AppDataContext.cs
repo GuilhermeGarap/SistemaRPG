@@ -14,7 +14,6 @@ namespace ApiRpg.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(u => u.UsuarioId);
@@ -35,6 +34,17 @@ namespace ApiRpg.Data
             {
                 entity.HasKey(f => f.FichaId);
                 entity.Property(f => f.Nome).IsRequired();
+
+                entity.HasOne(f => f.Classe)
+                    .WithMany() 
+                    .HasForeignKey(f => f.ClasseId);
+            });
+
+            modelBuilder.Entity<Classe>(entity =>
+            {
+                entity.HasKey(c => c.ClasseId);
+                entity.Property(c => c.Nome).IsRequired();
+                entity.Property(c => c.AtributoBonus).IsRequired();
             });
 
             // Configurações adicionais, se necessário
