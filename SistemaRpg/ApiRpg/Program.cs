@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ApiTeste.Data;
+using ApiRpg.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

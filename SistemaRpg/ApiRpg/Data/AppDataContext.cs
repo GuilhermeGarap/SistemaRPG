@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ApiRpg.Models;
 
-namespace ApiTeste.Data
+namespace ApiRpg.Data
 {
     public class AppDataContext : DbContext
     {
@@ -10,29 +10,34 @@ namespace ApiTeste.Data
         public DbSet<Campanha> Campanhas { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Classe> Classes { get; set; }
-        public DbSet<Ficha> Fichas{ get; set; }
+        public DbSet<Ficha> Fichas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Campanha>(entity =>
-            {
-                // Config propriedades
-            });
 
             modelBuilder.Entity<Usuario>(entity =>
             {
-                // Config propriedades
+                entity.HasKey(u => u.UsuarioId);
+                entity.Property(u => u.Nome).IsRequired();
+
+                entity.HasMany(u => u.Fichas)
+                    .WithOne(f => f.Usuario)
+                    .HasForeignKey(f => f.UsuarioId);
             });
 
-            modelBuilder.Entity<Classe>(entity =>
+            modelBuilder.Entity<Campanha>(entity =>
             {
-                // Config propriedades
+                entity.HasKey(c => c.CampanhaId);
+                entity.Property(c => c.Nome).IsRequired();
             });
 
             modelBuilder.Entity<Ficha>(entity =>
             {
-                // Config propriedades
+                entity.HasKey(f => f.FichaId);
+                entity.Property(f => f.Nome).IsRequired();
             });
+
+            // Configurações adicionais, se necessário
 
             base.OnModelCreating(modelBuilder);
         }
