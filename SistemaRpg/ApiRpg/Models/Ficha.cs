@@ -13,19 +13,19 @@ namespace ApiRpg.Models
         public string Historia { get; set; }
 
         [Range(1, 3, ErrorMessage = "O valor de Vigor deve estar entre 1 e 3.")]
-        public int? Vigor { get; set; }
+        public int Vigor { get; set; }
 
         [Range(1, 3, ErrorMessage = "O valor de Presença deve estar entre 1 e 3.")]
-        public int? Presenca { get; set; }
+        public int Presenca { get; set; }
 
         [Range(1, 3, ErrorMessage = "O valor de Sabedoria deve estar entre 1 e 3.")]
-        public int? Sabedoria { get; set; }
+        public int Sabedoria { get; set; }
 
         [Range(1, 3, ErrorMessage = "O valor de Força deve estar entre 1 e 3.")]
         public int Forca { get; set; }
 
         [Range(1, 3, ErrorMessage = "O valor de Agilidade deve estar entre 1 e 3.")]
-        public int? Agilidade { get; set; }
+        public int Agilidade { get; set; }
 
         public int ClasseId { get; set; } 
         [JsonIgnore]

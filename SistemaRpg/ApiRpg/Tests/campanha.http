@@ -8,10 +8,10 @@ Content-Type: application/json
 }
 
 
-### Listar todos os usuários
+### Listar todos as campanhas
 GET https://localhost:7108/api/campanha/listar
 
-### Alterar o nome de um usuário
+### Alterar o nome de uma campanha
 PUT https://localhost:7108/api/campanha/alterar/{id}
 Content-Type: application/json
 
@@ -20,8 +20,8 @@ Content-Type: application/json
     "Sinopse": "Texto Alternativo"
 }
 
-### Buscar um usuário específico por id
+### Buscar uma campanha específica por id
 GET https://localhost:7108/api/campanha/buscar/{id}
 
-### Excluir um usuário por id
+### Excluir uma campanha por id
 DELETE https://localhost:7108/api/campanha/deletar/{id}

@@ -3,15 +3,15 @@ POST https://localhost:7108/api/ficha/cadastrar
 Content-Type: application/json
 
 {
-    "Nome": "Nome do Persongem",
+    "Nome": "Nome do Persongem 3",
     //Descrição da Aparência do Personagem
     "DesAparencia": "Texto de descrição",
     "Historia": "História do personagem",
-    //Atributos: Você pode colocar até no máximo 3 em cada um, e você tem 5 pontos para gastar entre os 5 atributos.
+    //Atributos: Você pode colocar até no máximo 3 e no mínimo 1 em cada um, e você tem 7 pontos para gastar entre os 5 atributos.
     //Vigor: Refere-se à resistência física e à saúde geral do personagem. 
-    "Vigor": 1,
+    "Vigor": 2,
     //Presença: Indica a capacidade de influenciar e impressionar os outros.
-    "Presenca": 2,
+    "Presenca": 1,
     //Sabedoria: Representa o conhecimento e a inteligência do personagem.
     "Sabedoria": 1,
     //Força: Refere-se à potência física e capacidade de levantar ou carregar objetos pesados.
@@ -21,15 +21,15 @@ Content-Type: application/json
     //Classe do Personagem
     "ClasseId": 2,
     //Id do Usuário criando a ficha
-    "UsuarioId": 2,
+    "UsuarioId": 1,
     //Id da Campanha que o personagem irá participar
-    "CampanhaId": 2
+    "CampanhaId": 1
 }
 
-### Listar todos os usuários
+### Listar todos as fichas
 GET https://localhost:7108/api/ficha/listar
 
-### Alterar o nome de um usuário
+### Alterar dados de uma ficha
 PUT https://localhost:7108/api/ficha/alterar/1
 Content-Type: application/json
 
@@ -44,8 +44,8 @@ Content-Type: application/json
     "Agilidade": 1
 }
 
-### Buscar um usuário específico por id
+### Buscar uma ficha específica por id
 GET https://localhost:7108/api/ficha/buscar/{id}
 
-### Excluir um usuário por id
+### Excluir uma ficha por id
 DELETE https://localhost:7108/api/ficha/deletar/{id}

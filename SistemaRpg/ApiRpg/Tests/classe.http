@@ -3,15 +3,15 @@ POST https://localhost:7108/api/classe/cadastrar
 Content-Type: application/json
 
 {
-    "Nome": "Guerreiro",
+    "Nome": "Bárbaro",
     //AtributoBonus só poder ser preenchido com: Vigor, Força, Agilidade, Presença ou Sabedoria
-    "AtributoBonus": "Força"
+    "AtributoBonus": "Sabedoria"
 }
 
-### Listar todos os usuários
+### Listar todos as classes
 GET https://localhost:7108/api/classe/listar
 
-### Alterar o nome de um usuário
+### Alterar o nome de uma classe
 PUT https://localhost:7108/api/classe/alterar/{id}
 Content-Type: application/json
 
@@ -20,8 +20,7 @@ Content-Type: application/json
     //AtributoBonus só poder ser preenchido com: Vigor, Força, Agilidade, Presença ou Sabedoria
     "AtributoBonus": "Sabedoria"
 }
-### Buscar um usuário específico por id
+### Buscar uma classe específico por id
 GET https://localhost:7108/api/classe/buscar/{id}
-
-### Excluir um usuário por id
+### Excluir uma classe por id
 DELETE https://localhost:7108/api/classe/deletar/{id}

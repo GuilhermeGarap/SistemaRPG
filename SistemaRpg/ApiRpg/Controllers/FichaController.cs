@@ -62,13 +62,36 @@ namespace ApiRpg.Controllers
             }
         }
 
-        // POST: api/ficha/cadastrar
         [HttpPost]
         [Route("cadastrar")]
         public ActionResult CadastrarFicha([FromBody] Ficha ficha)
         {
             try
             {
+                int vigor = ficha.Vigor;
+                int presenca = ficha.Presenca;
+
+                // Consulta a classe com base no ClasseId
+                Classe classe = _ctx.Classes.FirstOrDefault(c => c.ClasseId == ficha.ClasseId);
+
+                if (classe != null)
+                {
+                    if (classe.AtributoBonus == "Vigor")
+                    {
+                        ficha.Vida = vigor * 5;
+                        ficha.Estamina = presenca * 4;
+                    }
+                    else if (classe.AtributoBonus == "Presença")
+                    {
+                        ficha.Vida = vigor * 4;
+                        ficha.Estamina = presenca * 5;
+                    }
+                    else {
+                    ficha.Vida = vigor * 4;
+                    ficha.Estamina = presenca * 4;
+                    }
+                }
+
                 _ctx.Fichas.Add(ficha);
                 _ctx.SaveChanges();
                 return Created("", ficha);
@@ -78,6 +101,9 @@ namespace ApiRpg.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
+
 
         // PUT: api/ficha/alterar/{id}
         [HttpPut]
