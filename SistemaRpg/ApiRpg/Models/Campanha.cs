@@ -1,9 +1,15 @@
-namespace ApiRpg.Models;
+using System.Text.Json.Serialization;
 
-public class Campanha
+namespace ApiRpg.Models
 {
-    public int CampanhaId { get; set; }
-    public string Nome { get; set; }
-    public string Sinopse { get; set; }
-    public List<Ficha> Fichas { get; set; }
+    public class Campanha
+    {
+        public int CampanhaId { get; set; }
+        public string Nome { get; set; }
+        public string Sinopse { get; set; }
+
+        public List<Ficha>? Fichas { get; set; } = new List<Ficha>();
+
+
+    }
 }

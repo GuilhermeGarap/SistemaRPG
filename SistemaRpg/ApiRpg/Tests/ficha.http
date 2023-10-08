@@ -1,0 +1,51 @@
+### Criar nova ficha
+POST https://localhost:7108/api/ficha/cadastrar
+Content-Type: application/json
+
+{
+    "Nome": "Nome do Persongem",
+    //Descrição da Aparência do Personagem
+    "DesAparencia": "Texto de descrição",
+    "Historia": "História do personagem",
+    //Atributos: Você pode colocar até no máximo 3 em cada um, e você tem 5 pontos para gastar entre os 5 atributos.
+    //Vigor: Refere-se à resistência física e à saúde geral do personagem. 
+    "Vigor": 1,
+    //Presença: Indica a capacidade de influenciar e impressionar os outros.
+    "Presenca": 2,
+    //Sabedoria: Representa o conhecimento e a inteligência do personagem.
+    "Sabedoria": 1,
+    //Força: Refere-se à potência física e capacidade de levantar ou carregar objetos pesados.
+    "Forca": 2,
+    //Agilidade: Indica a destreza e velocidade do personagem em movimentos e reações rápidas.
+    "Agilidade": 1,
+    //Classe do Personagem
+    "ClasseId": 2,
+    //Id do Usuário criando a ficha
+    "UsuarioId": 2,
+    //Id da Campanha que o personagem irá participar
+    "CampanhaId": 2
+}
+
+### Listar todos os usuários
+GET https://localhost:7108/api/ficha/listar
+
+### Alterar o nome de um usuário
+PUT https://localhost:7108/api/ficha/alterar/1
+Content-Type: application/json
+
+{
+    "Nome": "O destruidor",
+    "DesAparencia": "Texto de descrição",
+    "Historia": "História do personagem",
+    "Vigor": 1,
+    "Presenca": 2,
+    "Sabedoria": 1,
+    "Forca": 2,
+    "Agilidade": 1
+}
+
+### Buscar um usuário específico por id
+GET https://localhost:7108/api/ficha/buscar/{id}
+
+### Excluir um usuário por id
+DELETE https://localhost:7108/api/ficha/deletar/{id}

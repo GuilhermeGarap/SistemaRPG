@@ -23,7 +23,10 @@ namespace ApiRpg.Controllers
         {
             try
             {
-                List<Usuario> usuarios = _ctx.Usuarios.ToList();
+                List<Usuario> usuarios = _ctx.Usuarios
+                    .Include(u => u.Fichas) 
+                    .ToList();
+
                 return Ok(usuarios);
             }
             catch (Exception e)
@@ -32,6 +35,7 @@ namespace ApiRpg.Controllers
             }
         }
 
+
         // GET: api/usuario/buscar/{usuarioId}
         [HttpGet]
         [Route("buscar/{usuarioId}")]
@@ -39,7 +43,10 @@ namespace ApiRpg.Controllers
         {
             try
             {
-                Usuario usuario = _ctx.Usuarios.FirstOrDefault(u => u.UsuarioId == usuarioId);
+                Usuario usuario = _ctx.Usuarios
+                    .Include(u => u.Fichas) 
+                    .FirstOrDefault(u => u.UsuarioId == usuarioId);
+
                 if (usuario != null)
                 {
                     return Ok(usuario);
@@ -51,6 +58,7 @@ namespace ApiRpg.Controllers
                 return BadRequest(e.Message);
             }
         }
+
 
         // POST: api/usuario/cadastrar
         [HttpPost]

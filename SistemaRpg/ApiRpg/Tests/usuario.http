@@ -3,7 +3,7 @@ POST https://localhost:7108/api/usuario/cadastrar
 Content-Type: application/json
 
 {
-    "Nome": "Carlos Peçanha"
+    "Nome": "Leonardo"
 }
 
 ### Listar todos os usuários
@@ -14,7 +14,7 @@ PUT https://localhost:7108/api/usuario/alterar/{id}
 Content-Type: application/json
 
 {
-    "Nome": "José Marantos"
+    "Nome": "Carlos"
 }
 
 ### Buscar um usuário específico por id

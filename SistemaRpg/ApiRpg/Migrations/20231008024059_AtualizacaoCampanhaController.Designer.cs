@@ -3,6 +3,7 @@ using System;
 using ApiRpg.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRpg.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231008024059_AtualizacaoCampanhaController")]
+    partial class AtualizacaoCampanhaController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.21");
@@ -64,9 +66,6 @@ namespace ApiRpg.Migrations
                     b.Property<int>("Agilidade")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CampanhaId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("ClasseId")
                         .HasColumnType("INTEGER");
 
@@ -105,8 +104,6 @@ namespace ApiRpg.Migrations
 
                     b.HasKey("FichaId");
 
-                    b.HasIndex("CampanhaId");
-
                     b.HasIndex("ClasseId");
 
                     b.HasIndex("UsuarioId");
@@ -129,36 +126,53 @@ namespace ApiRpg.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("CampanhaFicha", b =>
+                {
+                    b.Property<int>("CampanhasCampanhaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FichasFichaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CampanhasCampanhaId", "FichasFichaId");
+
+                    b.HasIndex("FichasFichaId");
+
+                    b.ToTable("CampanhaFicha");
+                });
+
             modelBuilder.Entity("ApiRpg.Models.Ficha", b =>
                 {
-                    b.HasOne("ApiRpg.Models.Campanha", "Campanha")
-                        .WithMany("Fichas")
-                        .HasForeignKey("CampanhaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ApiRpg.Models.Classe", "Classe")
                         .WithMany()
                         .HasForeignKey("ClasseId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApiRpg.Models.Usuario", "Usuario")
                         .WithMany("Fichas")
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Campanha");
 
                     b.Navigation("Classe");
 
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("ApiRpg.Models.Campanha", b =>
+            modelBuilder.Entity("CampanhaFicha", b =>
                 {
-                    b.Navigation("Fichas");
+                    b.HasOne("ApiRpg.Models.Campanha", null)
+                        .WithMany()
+                        .HasForeignKey("CampanhasCampanhaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApiRpg.Models.Ficha", null)
+                        .WithMany()
+                        .HasForeignKey("FichasFichaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ApiRpg.Models.Usuario", b =>

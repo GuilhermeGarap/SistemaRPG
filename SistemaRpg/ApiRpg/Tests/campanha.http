@@ -1,0 +1,27 @@
+### Criar nova campanha
+POST https://localhost:7108/api/campanha/cadastrar
+Content-Type: application/json
+
+{
+    "Nome": "Nome da Campanha",
+    "Sinopse": "Texto explicando a campanha"
+}
+
+
+### Listar todos os usuários
+GET https://localhost:7108/api/campanha/listar
+
+### Alterar o nome de um usuário
+PUT https://localhost:7108/api/campanha/alterar/{id}
+Content-Type: application/json
+
+{
+    "Nome": "Nome Alternativo",
+    "Sinopse": "Texto Alternativo"
+}
+
+### Buscar um usuário específico por id
+GET https://localhost:7108/api/campanha/buscar/{id}
+
+### Excluir um usuário por id
+DELETE https://localhost:7108/api/campanha/deletar/{id}

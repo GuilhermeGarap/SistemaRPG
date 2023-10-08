@@ -21,14 +21,20 @@ namespace ApiRpg.Data
 
                 entity.HasMany(u => u.Fichas)
                     .WithOne(f => f.Usuario)
-                    .HasForeignKey(f => f.UsuarioId);
+                    .HasForeignKey(f => f.UsuarioId)
+                    .OnDelete(DeleteBehavior.Restrict); 
             });
 
-            modelBuilder.Entity<Campanha>(entity =>
-            {
-                entity.HasKey(c => c.CampanhaId);
-                entity.Property(c => c.Nome).IsRequired();
-            });
+        modelBuilder.Entity<Campanha>(entity =>
+        {
+            entity.HasKey(c => c.CampanhaId);
+            entity.Property(c => c.Nome).IsRequired();
+
+            entity
+                .HasMany(c => c.Fichas)
+                .WithOne(f => f.Campanha)  
+                .HasForeignKey(f => f.CampanhaId); 
+        });
 
             modelBuilder.Entity<Ficha>(entity =>
             {
@@ -36,8 +42,9 @@ namespace ApiRpg.Data
                 entity.Property(f => f.Nome).IsRequired();
 
                 entity.HasOne(f => f.Classe)
-                    .WithMany() 
-                    .HasForeignKey(f => f.ClasseId);
+                    .WithMany()
+                    .HasForeignKey(f => f.ClasseId)
+                    .OnDelete(DeleteBehavior.Restrict); 
             });
 
             modelBuilder.Entity<Classe>(entity =>
