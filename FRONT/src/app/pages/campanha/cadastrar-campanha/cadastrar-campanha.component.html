@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Cadastrar Campanha</mat-card-title>
+      <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="input" id="nome">
+        <mat-label>Nome</mat-label>
+        <input
+          placeholder="Ex. Nome da Campanha"
+          matInput
+          type="text"
+          [(ngModel)]="nome"
+        />
+      </mat-form-field>
+      <mat-form-field class="input" id="sinopse">
+        <mat-label>Sinopse</mat-label>
+        <textarea
+          placeholder="Ex. Breve descrição da campanha"
+          matInput
+          [(ngModel)]="sinopse"
+        ></textarea>
+      </mat-form-field>
+      <!-- Adapte conforme necessário para o array de fichas -->
+      <mat-form-field class="input" id="fichas">
+        <mat-label>Fichas</mat-label>
+        <input
+          placeholder="Ex. Ficha 1, Ficha 2"
+          matInput
+          type="text"
+          [(ngModel)]="fichas"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button color="warn" mat-stroked-button (click)="cadastrar()">
+        Cadastrar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

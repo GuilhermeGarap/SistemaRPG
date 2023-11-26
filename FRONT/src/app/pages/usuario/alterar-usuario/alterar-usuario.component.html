@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Alterar Usuário</mat-card-title>
+    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field class="input" id="id">
+        <mat-label>Id</mat-label>
+        <input placeholder="Ex. 1" matInput type="text" [(ngModel)]="usuarioId" disabled />
+      </mat-form-field>
+      <mat-form-field class="input" id="nome">
+        <mat-label>Nome</mat-label>
+        <input placeholder="Ex. João" matInput type="text" [(ngModel)]="nome" name="nome" required />
+      </mat-form-field>
+      <mat-form-field class="input" id="fichas">
+        <mat-label>Fichas</mat-label>
+        <div *ngFor="let ficha of fichas; let i = index">
+          {{ ficha.nome }}
+          <button mat-icon-button color="warn" (click)="removerFicha(i)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button color="primary" (click)="adicionarFicha()">Adicionar Ficha</button>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-stroked-button (click)="alterar()" [disabled]="!nome || !fichas.length">
+      Alterar
+    </button>
+  </mat-card-actions>
+</mat-card>

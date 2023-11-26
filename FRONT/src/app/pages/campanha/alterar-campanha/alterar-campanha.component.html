@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Alterar Campanha</mat-card-title>
+    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field class="input" id="id">
+        <mat-label>Id</mat-label>
+        <input placeholder="Ex. 1" matInput type="text" [(ngModel)]="campanhaId" disabled />
+      </mat-form-field>
+      <mat-form-field class="input" id="nome">
+        <mat-label>Nome</mat-label>
+        <input placeholder="Ex. Nome da Campanha" matInput type="text" [(ngModel)]="nome" name="nome" required />
+      </mat-form-field>
+      <mat-form-field class="input" id="sinopse">
+        <mat-label>Sinopse</mat-label>
+        <textarea placeholder="Ex. Descrição da Campanha" matInput [(ngModel)]="sinopse" name="sinopse" required></textarea>
+      </mat-form-field>
+      <!-- Adapte conforme necessário para outras propriedades da Campanha -->
+      <div *ngFor="let ficha of fichas; let i = index">
+        {{ ficha.nome }}
+        <button mat-icon-button color="warn" (click)="removerFicha(i)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="primary" (click)="adicionarFicha()">Adicionar Ficha</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-stroked-button (click)="alterar()" [disabled]="!nome || !sinopse">
+      Alterar
+    </button>
+  </mat-card-actions>
+</mat-card>

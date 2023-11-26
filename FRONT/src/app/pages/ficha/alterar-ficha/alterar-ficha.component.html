@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Alterar Ficha</mat-card-title>
+    <mat-card-subtitle>&nbsp;</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field class="input" id="id">
+        <mat-label>Id</mat-label>
+        <input placeholder="Ex. 1" matInput type="text" [(ngModel)]="fichaId" disabled />
+      </mat-form-field>
+      <mat-form-field class="input" id="nome">
+        <mat-label>Nome</mat-label>
+        <input placeholder="Ex. Ficha A" matInput type="text" [(ngModel)]="nome" name="nome" required />
+      </mat-form-field>
+      <mat-form-field class="input" id="vida">
+        <mat-label>Vida</mat-label>
+        <input placeholder="Ex. 100" matInput type="number" [(ngModel)]="vida" name="vida" required />
+      </mat-form-field>
+      <mat-form-field class="input" id="estamina">
+        <mat-label>Estamina</mat-label>
+        <input placeholder="Ex. 50" matInput type="number" [(ngModel)]="estamina" name="estamina" required />
+      </mat-form-field>
+      <!-- Adapte conforme necessário para outras propriedades da Ficha -->
+      <div *ngFor="let ficha of fichas; let i = index">
+        {{ ficha.nome }}
+        <button mat-icon-button color="warn" (click)="removerFicha(i)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="primary" (click)="adicionarFicha()">Adicionar Ficha</button>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-stroked-button (click)="alterar()" [disabled]="!nome || !vida || !estamina">
+      Alterar
+    </button>
+  </mat-card-actions>
+</mat-card>
